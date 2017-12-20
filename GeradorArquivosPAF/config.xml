@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<impressao_automatica>
+  <!--Conexão_banco_de_dados-->
+  <ip-banco>172.16.100.16</ip-banco>
+  <nome-banco>teste11g</nome-banco>
+  <usuario-banco>gp_desenv</usuario-banco>
+  <senha-banco>gp</senha-banco>
+  <porta-banco>1521</porta-banco>
+  <pasta-salvar>C:\XML\</pasta-salvar>
+</impressao_automatica>

@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:app1="http://www.w3.org/2000/09/xmldsig#">
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd" />
+  <xs:element name="ReducaoZ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Mensagem">
+          <xs:complexType mixed="true">
+            <xs:sequence>
+              <xs:element name="Estabelecimento">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="IeType" name="Ie"/>
+                    <xs:element type="CnpjType" name="Cnpj"/>
+                    <xs:element type="String1a4000Type" name="NomeEmpresarial"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="PafEcf">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NumeroCredenciamento">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:token">
+                          <xs:pattern value="[0-9]{1,15}"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element type="String1a4000Type" name="NomeComercial"/>
+                    <xs:element type="String1a20Type" name="Versao"/>
+                    <xs:element type="CnpjType" name="CnpjDesenvolvedor"/>
+                    <xs:element type="String1a4000Type" name="NomeEmpresarialDesenvolvedor"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Ecf">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="String1a4000Type" name="NumeroFabricacao"/>
+                    <xs:element type="String1a4000Type" name="Tipo"/>
+                    <xs:element type="String1a4000Type" name="Marca"/>
+                    <xs:element type="String1a4000Type" name="Modelo"/>
+                    <xs:element type="String1a4000Type" name="Versao"/>
+                    <xs:element type="Numero1a9Type" name="Caixa"/>
+                    <xs:element name="DadosReducaoZ">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:date" name="DataReferencia"/>
+                          <xs:element type="Numero1a9Type" name="CRZ"/>
+                          <xs:element type="Numero1a6Type" name="COO"/>
+                          <xs:element type="Numero1a6Type" name="CRO"/>
+                          <xs:element type="Numero1a11Sendo2PrecisaoType" name="VendaBrutaDiaria"/>
+                          <xs:element type="Numero1a11Sendo2PrecisaoType" name="GT"/>
+                          <xs:element name="TotalizadoresParciais">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="TotalizadorParcial"  minOccurs="1" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="String1a4000Type" name="Nome"/>
+                                      <xs:element type="Numero1a11Sendo2PrecisaoType" name="Valor"/>
+                                      <xs:element name="ProdutosServicos">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="Produto" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="String1a4000Type" name="Descricao"/>
+                                                  <xs:element type="String1a4000Type" name="Codigo" />
+                                                  <xs:element name="CodigoTipo">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="GTIN"/>
+                                                        <xs:enumeration value="EAN"/>
+                                                        <xs:enumeration value="Proprio"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element type="Numero1a20Type" name="Quantidade"/>
+                                                  <xs:element type="String1a4000Type" name="Unidade"/>
+                                                  <xs:element type="Numero1a11Sendo2PrecisaoType" name="ValorUnitario"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="Servico" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="String1a4000Type" name="Descricao"/>
+                                                  <xs:element type="String1a4000Type" name="Codigo" />
+                                                  <xs:element name="CodigoTipo">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="GTIN"/>
+                                                        <xs:enumeration value="EAN"/>
+                                                        <xs:enumeration value="Próprio"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element type="Numero1a20Type" name="Quantidade"/>
+                                                  <xs:element type="String1a4000Type" name="Unidade"/>
+                                                  <xs:element type="Numero1a11Sendo2PrecisaoType" name="ValorUnitario"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref="app1:Signature" />
+      </xs:sequence>
+      <xs:attribute type="String1a10Type" name="Versao"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Ie -->
+  <xs:simpleType name="IeType">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9]{1,20}|Isento"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Cnpj -->
+  <xs:simpleType name="CnpjType">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9]{14}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Número 1 a 6 -->
+  <xs:simpleType name="Numero1a6Type">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9]{1,6}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Número 1 a 9 -->
+  <xs:simpleType name="Numero1a9Type">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9]{1,9}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Número 1 a 11 -->
+  <xs:simpleType name="Numero1a11Sendo2PrecisaoType">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9]{1,9},[0-9]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Número 1 a 20 -->
+  <xs:simpleType name="Numero1a20Type">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9]{1,20}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- String com length min de 1 e max de 10 -->
+  <xs:simpleType name="String1a10Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="10"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- String com length min de 1 e max de 20 -->
+  <xs:simpleType name="String1a20Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- String com length min de 1 e max de 4000 -->
+  <xs:simpleType name="String1a4000Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="4000"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

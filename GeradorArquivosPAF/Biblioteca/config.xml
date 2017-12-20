@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<impressao_automatica>
+  <!--Conexão_banco_de_dados-->
+  <ip-banco>192.168.1.202</ip-banco>
+  <nome-banco>xe</nome-banco>
+  <usuario-banco>prodaly</usuario-banco>
+  <senha-banco>123</senha-banco>
+  <porta-banco>1521</porta-banco>
+  <!--Unidade_negocio_ALFA50_1-->
+  <unidade_negocio>005</unidade_negocio>
+</impressao_automatica>
